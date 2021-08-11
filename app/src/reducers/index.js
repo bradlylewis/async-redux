@@ -1,20 +1,9 @@
 import { FETCH_START, FETCH_SUCCESS, FETCH_FAIL } from '../actions'
 
 const initialState = {
-    person: {
-      name: {
-        title: "",
-        first: "",
-        last: ""
-      },
-      picture: {
-        large: "",
-        medium: "",
-        thumbnail: ""
-      }
-    },
     isFetching: false,
-    error: ''
+    error: '',
+    quote: 'What does the fox say'
   };
   
   export const reducer = (state = initialState, action) => {
@@ -28,7 +17,7 @@ const initialState = {
       case(FETCH_SUCCESS):
         return({
           ...state,
-          person: action.payload,
+          quote: action.payload,
           isFetching: false
         });
       case(FETCH_FAIL):

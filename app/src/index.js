@@ -5,17 +5,16 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger'
 import { reducer } from './reducers'
 import thunk from 'redux-thunk';
-
-import './index.css';
 import App from './App';
+import './index.css';
+
 
 const store = createStore(reducer, applyMiddleware(thunk, logger))
+const rootElement = document.getElementById('root');
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  rootElement
 );

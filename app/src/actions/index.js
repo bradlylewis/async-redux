@@ -1,26 +1,28 @@
 import axios from 'axios'
 
-export const getPerson = () => {
+export const getQuote = () => {
     return (dispatch) => {
         dispatch(fetchStart());
-        axios.get('https://randomuser.me/api')
-            .then(response => {
-                dispatch(fetchSuccess(response.data.results[0]));
+        axios.get('https://api.kanye.rest/')
+            .then(res=>{
+                console.log("RIGHT HERE:",res.data)
+                dispatch(fetchSuccess(res.data.quote));
             })
-            .catch(error => {
-                dispatch(fetchFail(error));
-            })
+            .catch(err => {
+                dispatch(fetchFail(err));
+            });
     }
 }
 
-export const FETCH_START = 'FETCH_START';
-export const fetchStart = () => {
-    return({type:FETCH_START});
+
+export const FETCH_START = "FETCH_START";
+export const fetchStart = ()=> {
+    return({type: FETCH_START});
 }
 
-export const FETCH_SUCCESS = 'FETCH_SUCCESS';
-export const fetchSuccess = (person) => {
-    return({type: FETCH_SUCCESS, payload: person});
+export const FETCH_SUCCESS = "FETCH_SUCCESS";
+export const fetchSuccess = (quote)=> {
+    return({type: FETCH_SUCCESS, payload: quote});
 }
 
 export const FETCH_FAIL = "FETCH_FAIL";

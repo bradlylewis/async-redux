@@ -1,11 +1,11 @@
 import './App.css';
-import Person from './components/Person'
+import Quote from './components/Quote'
 
 function App() {
   return (
     <div className="App">
-      <h1>Get a person</h1>
-      <Person />
+      <h1>Get a quote</h1>
+      <Quote />
     </div>
   );
 }
